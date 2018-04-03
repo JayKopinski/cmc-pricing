@@ -1,6 +1,6 @@
 
-// **** Shopify Private App for Getting Crypto Prices
-// and Updating Product Prices in Shopify Store *****
+// **** Private App for Getting Crypto Prices
+// and Updating Product Price *****
 
 // INDEX.JS (MAIN FILE)
 
@@ -17,7 +17,7 @@ app.use(cors());
 require('dotenv').config(); // Require local config file. .env files aren't publicly available so good for API Keys etc.
 
 var port = 3000;
-var shopURL = "cryptofiat.myshopify.com";
+var shopURL = "hipptee.myshopify.com";
 
 // API CREDENTIALS FOR ACCESSING THE STORE (Need to update the .env file with your own private app credentials)
 const API_KEY = process.env.API_KEY;
@@ -41,7 +41,9 @@ var prices = {
   "ETH" : 0,
   "DASH" : 0,
   "LTC" : 0,
-  "XRP" : 0,
+  "NEO" : 0,
+  "XMR" : 0,
+  "DOGE" : 0,
 };
 
 // This is needed because Coinmarketcap uses bitcoin names, but you're using
@@ -51,7 +53,9 @@ var coinCodes = {
   "ETH" : "ethereum",
   "DASH" : "dash",
   "LTC" : "litecoin",
-  "XRP" : "ripple"
+  "NEO" : "Neo",
+  "XMR" : "Monero"
+  "DOGE" : "Dogecoin"
 };
 
 // How much extra to add to each product
@@ -71,7 +75,7 @@ function cryptoCron() {
   // CRON JOB
   // This will run every 10 seconds to get bitcoin price
   // var timer = '*/10 * * * * *'; // For info on timer see https://www.npmjs.com/package/node-schedule
-  var timer = '* */1 * * * '; // 1 minute
+  var timer = '* */5 * * * '; // 5 minute
   // var timer = '* * * * * 1'
 
   var myCron = schedule.scheduleJob(timer, function() {

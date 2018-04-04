@@ -103,3 +103,8 @@ app.get('/', function(req, res) {
     res.send(data);
   });
 });
+
+app.listen(port, function() {
+  cryptoCron(); // Start running our cronJob
+  console.log("Crypto App running on port: " + port);
+})

@@ -59,7 +59,7 @@ function getAllCryptoPrice(callback) {
       // Something went wrong. Log to console.
       console.log(err);
     } else {
-      var data = JSON.parse(resp.body); // The response is a HTTPS response object, so we want to let it know it's JSON and parse just the body as such
+      var data = JSON.parse(resp["body"]); // The response is a HTTPS response object, so we want to let it know it's JSON and parse just the body as such
       callback(data); // Return the data to our callback so it can do stuff with it.
     }
   });
@@ -79,7 +79,7 @@ function getCryptoPrice(coinName, callback) {
       // Something went wrong. Log to console.
       console.log(err);
     } else {
-      var data = JSON.parse(resp.body);
+      var data = JSON.parse(resp["body"]);
       callback(data);
     }
   });

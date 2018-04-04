@@ -59,9 +59,9 @@ function cryptoCron() {
         });
 
       });
-    };
-  })
-};
+    }
+  });
+}
 
 function getAllCryptoPrice(callback) {
   // FUNCTION TO GET CRYPTO PRICE.
@@ -83,5 +83,5 @@ function getAllCryptoPrice(callback) {
       callback(data); // Return the data to our callback so it can do stuff with it.
     }
   });
-};
+}
 

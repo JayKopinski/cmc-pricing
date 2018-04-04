@@ -38,7 +38,7 @@ function cryptoCron() {
   // CRON JOB
   // This will run every 10 seconds to get bitcoin price
   // var timer = '*/10 * * * * *'; // For info on timer see https://www.npmjs.com/package/node-schedule
-  var timer = '* */1 * * * '; // 1 minute
+  var timer = '* */5 * * * '; // 5 minute
   // var timer = '* * * * * 1'
 }
   

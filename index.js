@@ -15,15 +15,7 @@ var bodyParser = require('body-parser');
 var schedule = require('node-schedule');
 var cors = require('cors');
 app.use(cors());
-// Require local config file. .env files aren't publicly available so good for API Keys etc.
-require('dotenv').config();
-var port = 3000;
-var shopURL = "hipptee.myshopify.com";
-// API CREDENTIALS FOR ACCESSING THE STORE (Need to update the .env file with your own private app credentials)
-const API_KEY = process.env.API_KEY;
-const PASSWORD = process.env.PASSWORD;
-// This is an array of the products that will get updated.
-// Array meaning you can have a list of Ids like ["123", "1234", "4315"] and reference in a loop or by productId[0]
+
 // DETECT IF IT'S RUNNING ON LOCAL ENVIRONMENT OR HEROKU
 if (app.get('env') === 'development') {
 	// Settings for local

@@ -17,7 +17,7 @@ app.use(cors());
 require('dotenv').config(); // Require local config file. .env files aren't publicly available so good for API Keys etc.
 
 var port = 3000;
-var shopURL = "cryptofiat.myshopify.com";
+var shopURL = "hipptee.myshopify.com";
 
 // API CREDENTIALS FOR ACCESSING THE STORE (Need to update the .env file with your own private app credentials)
 const API_KEY = process.env.API_KEY;

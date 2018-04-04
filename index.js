@@ -1,4 +1,3 @@
-
 // **** Shopify Private App for Getting Crypto Prices
 // and Updating Product Prices in Shopify Store *****
 
@@ -18,22 +17,21 @@ function cryptoCron() {
   // CRON JOB
   // This will run every 10 seconds to get bitcoin price
   // var timer = '*/10 * * * * *'; // For info on timer see https://www.npmjs.com/package/node-schedule
-  var timer = '* */5 * * * '; // 5 minute
-  // var timer = '* * * * * 1'
-
+  var timer = '* */1 * * * '; // 1 minute
+ // var timer = '* * * * * 1'
+  
   var myCron = schedule.scheduleJob(timer, function() {
     console.log('Running Cron');
-   
 
 function getAllCryptoPrice(callback) {
   // FUNCTION TO GET CRYPTO PRICE.
   // When this function is called, it makes an API call CoinMarketCap and returns JSON
   // callback is what is done after the API all returns.
-  // This function essentially returns the same data as if you were to visit this URL - https://api.coinmarketcap.com/v1/ticker/?convert=USD&limit=10
+  // This function essentially returns the same data as if you were to visit this URL - https://api.coinmarketcap.com/v1/ticker/?convert=CAD&limit=10
   // The data it returns is an array of objects. Which means each cryptoprice is at a different index.
 
   request({
-    url : "https://api.coinmarketcap.com/v1/ticker/?convert=USD&limit=20",
+    url : "https://api.coinmarketcap.com/v1/ticker/?convert=CAD&limit=20",
     method: "GET",
     dataType: "json"
   }, function(err, resp) {
@@ -46,4 +44,3 @@ function getAllCryptoPrice(callback) {
     }
   });
 }
-

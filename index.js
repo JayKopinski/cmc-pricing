@@ -51,7 +51,7 @@ function getAllCryptoPrice(callback) {
   // The data it returns is an array of objects. Which means each cryptoprice is at a different index.
 
   request({
-    url : "https://api.coinmarketcap.com/v1/ticker/?convert=CAD&limit=20",
+    url : "https://api.coinmarketcap.com/v1/ticker/?convert=CAD&limit=50",
     method: "GET",
     dataType: "json"
   }, function(err, resp) {

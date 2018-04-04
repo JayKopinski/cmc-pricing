@@ -1,4 +1,3 @@
-
 // **** Shopify Private App for Getting Crypto Prices
 // and Updating Product Prices in Shopify Store *****
 
@@ -33,7 +32,7 @@ if (app.get('env') === 'development') {
 } else {
   // Settings for Heroku
   port = process.env.PORT;
-};
+}
 
 function cryptoCron() {
   // CRON JOB
@@ -64,13 +63,13 @@ function getAllCryptoPrice(callback) {
       callback(data); // Return the data to our callback so it can do stuff with it.
     }
   });
-};
+}
 
 function getCryptoPrice(coinName, callback) {
   // This function returns a specific crypto price by their id (case sensitive).
   // Valid values examples: bitcoin, ethereum, ripple etc
   // Send an API request to coinmarketcap
-  console.log('Getting ' + coinName + " price!" )
+  console.log('Getting ' + coinName + " price!" );
   request({
     url : "https://api.coinmarketcap.com/v1/ticker/" + coinName + "/?convert=CAD&limit=10",
     method: "GET",
@@ -84,7 +83,7 @@ function getCryptoPrice(coinName, callback) {
       callback(data);
     }
   });
-};
+}
 
 
 
@@ -102,6 +101,5 @@ app.get('/', function(req, res) {
     // will always be priced the highest, and therefore the first in the array.
     // To be safe it would be smarter to loop over them all
     res.send(data);
-  })
+  });
 });
-

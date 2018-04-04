@@ -84,30 +84,3 @@ app.get('/', function(req, res) {
   })
 });
 
-app.get('/exchangeprice/:coinId', function(req, res) {
-  // Get Specific Coin Price from Exchange
-
-  // visit localhost:3000/bitcoin or localhost:3000/ethereum to see just that specific price
-  // This function uses query parameters to get the coinId variable which is passed to getCryptoPrice function
-  getCryptoPrice(req.params.coinId, function(data) {
-    res.send(data);
-  });
-});
-
-app.get('/shopprice/:coinId', function(req, res) {
-  // Current price in Shopify. Will list all the product data in the productID Array
-  var productId = productDict[req.params.coinId];
-  getProductPrice(productId, function(data) {
-    res.send(data);
-  });
-});
-
-app.get('/storedPrice/:coinId', function(req, res){
-    // Sends the most recently stored price for that coin
-    res.send(prices[req.params.coinId]);
-});
-
-app.listen(port, function() {
-  cryptoCron(); // Start running our cronJob
-  console.log("Crypto App running on port: " + port);
-})

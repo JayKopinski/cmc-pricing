@@ -10,10 +10,29 @@ const app = express();  // Establish the express app
 var request = require('request'); // Library for making API calls
 var bodyParser = require('body-parser'); // For decoding JSON
 var schedule = require('node-schedule'); // For running cron jobs
+var cors = require('cors');
 
+app.use(cors());
+require('dotenv').config(); // Require local config file. .env files aren't publicly available so good for API Keys etc.
 
+var port = 3000;
 var shopURL = "hipptee.myshopify.com";
 
+// API CREDENTIALS FOR ACCESSING THE STORE (Need to update the .env file with your own private app credentials)
+const API_KEY = process.env.API_KEY;
+const PASSWORD = process.env.PASSWORD;
+
+
+
+// DETECT IF IT'S RUNNING ON LOCAL ENVIRONMENT OR HEROKU
+if (app.get('env') === 'development') {
+  // Settings for local
+  require('dotenv').config(); // Load env file
+  port = 3000;
+} else {
+  // Settings for Heroku
+  port = process.env.PORT;
+}
 
 function cryptoCron() {
   // CRON JOB

@@ -75,27 +75,6 @@ function getAllCryptoPrice(callback) {
   });
 }
 
-function getCryptoPrice(coinName, callback) {
-  // This function returns a specific crypto price by their id (case sensitive).
-  // Valid values examples: bitcoin, ethereum, ripple etc
-  // Send an API request to coinmarketcap
-  console.log('Getting ' + coinName + " price!" );
-  request({
-    url : "https://api.coinmarketcap.com/v1/ticker/" + coinName + "/?convert=CAD&limit=10",
-    method: "GET",
-    dataType: "json"
-  }, function(err, resp) {
-    if (err) {
-      // Something went wrong. Log to console.
-      console.log(err);
-    } else {
-      var data = JSON.parse(resp["body"]);
-      callback(data);
-    }
-  });
-}
-
-
 
 // These are specific Routes you can use to see the data for yourself by visiting localhost:3000 followed by the route.
 app.get('/', function(req, res) {
